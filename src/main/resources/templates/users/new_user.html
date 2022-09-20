@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить пользователя</title>
+</head>
+<body>
+<div>
+    <form th:method="post" th:action="@{/admin/users}" th:object="${user}">
+        <table>
+            <tr>
+                <td><label for="name">Name: </label></td>
+                <td><input type="text" th:field="*{name}" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="surname">Surname: </label></td>
+                <td><input type="text" th:field="*{surname}" id="surname"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age: </label></td>
+                <td><input type="text" th:field="*{age}" id="age"></td>
+            </tr>
+            <tr>
+                <td><label for="username">username: </label></td>
+                <td><input type="text" th:field="*{username}" id="username"></td>
+            </tr>
+            <tr>
+                <td><label for="password">password: </label></td>
+                <td><input type="text" th:field="*{password}" id="password" onfocus="this.value=''"></td>
+            </tr>
+            <tr>
+                <td><label>Role: </label></td>
+                <td>
+                    <input type="checkbox" name="rolesId"
+                           th:each="role : ${allRoles}"
+                           th:text="${role.toString()}"
+                           th:value="${role.id}"
+                    />
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>

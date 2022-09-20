@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить пользователя</title>
+</head>
+<body>
+<div>
+    <form th:method="patch" th:action="@{/admin/users/{id} (id=${user.getId()}) }" th:object="${user}">
+        <table>
+            <tr>
+                <td><label for="name">Input name: </label></td>
+                <td><input type="text" th:field="*{name}" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="surname">Input surname: </label></td>
+                <td><input type="text" th:field="*{surname}" id="surname"></td>
+            </tr>
+            <input type="hidden" th:field="*{age}" id="age">
+            <tr>
+                <td><label for="username">Username: </label></td>
+                <td><input type="text" th:field="*{username}" id="username"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password: </label></td>
+                <td><input type="password" th:field="*{password}" id="password" с></td>
+            </tr>
+            <tr>
+                <td><label>Role: </label></td>
+                <td>
+                    <input type="checkbox" name="rolesId"
+                           th:each="role : ${allRoles}"
+                           th:text="${role.toString()}"
+                           th:value="${role.id}"
+                           th:checked="${user.roles.contains(role)}"
+                    />
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>
