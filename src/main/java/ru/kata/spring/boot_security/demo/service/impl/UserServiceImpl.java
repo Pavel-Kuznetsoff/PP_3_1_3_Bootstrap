@@ -18,7 +18,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
-    // TODO сделать чтобы кодировались пароли при изменении и создании юзера
     private BCryptPasswordEncoder encoder;
 
     @Autowired
